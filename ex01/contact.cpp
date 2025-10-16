@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:41:43 by nafarid           #+#    #+#             */
-/*   Updated: 2025/10/15 13:29:23 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/10/16 09:46:23 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ std::string Contact::getfirst()
 }
 std::string Contact::getlast()
 {
-    return this->firstname;
+    return this->lastname;
 }
 std::string Contact::getnick()
 {
-    return this->firstname; 
+    return this->nickname; 
 }
 std::string Contact::getphone()
 {
-    return this->firstname;
+    return this->phonenumber;
 }
 std::string Contact::getsecret()
 {
-    return this->firstname;
+    return this->darkestsecret;
 }
 void Contact::setfirst(std::string name)
 {
@@ -45,17 +45,17 @@ void Contact::setfirst(std::string name)
 }
 void Contact::setlast(std::string name)
 {
-    this->firstname = name;
+    this->lastname = name;
 }
 void Contact::setnick(std::string name)
 {
-    this->firstname = name;
+    this->nickname = name;
 }
 void Contact::setphone(std::string name)
 {
-    this->firstname = name;
+    this->phonenumber = name;
 }
 void Contact::setsecret(std::string name)
 {
-    this->firstname = name;
+    this->darkestsecret = name;
 }
