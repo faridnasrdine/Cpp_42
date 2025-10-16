@@ -15,6 +15,8 @@
 
 #include "contact.hpp"
 #include "phonebook.hpp"
+#include <limits>
+
 #define red "\033[31m"
 #define reset "\033[0m"
 #define green "\x1B[32m"
