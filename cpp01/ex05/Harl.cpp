@@ -16,3 +16,17 @@ void Harl::error( void ) {
 }
 
 
+void Harl::complain(std::string levl)
+{
+    void (Harl::*function_ptr[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    const char *array_str[] = {"DEBUG", "INFO", "WARNING" , "ERROR"};
+
+    for(int i = 0; i < 4; i++)
+    {
+        if(array_str[i] == levl)
+        {
+            (this->*function_ptr[i])();
+            break;
+        }
+    }
+}
