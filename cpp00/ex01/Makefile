@@ -6,7 +6,7 @@
 #    By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 13:29:07 by nafarid           #+#    #+#              #
-#    Updated: 2025/11/23 16:46:53 by nafarid          ###   ########.fr        #
+#    Updated: 2025/11/04 13:16:45 by nafarid          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+
 clean:
 	rm -f $(OBJ)
 

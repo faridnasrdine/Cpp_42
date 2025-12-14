@@ -1,17 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/22 16:13:45 by nafarid           #+#    #+#             */
+/*   Updated: 2025/10/23 12:13:20 by nafarid          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phone.hpp"
-
-int valid_phone(std::string number)
-{
-	if (number.empty())
-		return 1;
-
-	for (size_t i = 0; i < number.length(); i++)
-	{
-		if (number[i] < '0' || number[i] > '9')
-			return 1;
-	}
-	return 0;
-}
 
 bool get_input(const std::string &prompt, std::string &input)
 {
@@ -29,7 +28,85 @@ bool get_input(const std::string &prompt, std::string &input)
 	}
 	return true;
 }
-
+void loop_contact(std::string contact[5])
+{
+	while(true)
+			{
+				std::cout << green << "First Name: " << reset;
+				if (!std::getline(std::cin, contact[0]))
+				{
+					if (std::cin.eof())
+					{
+						std::cout << std::endl
+								  << red << "EOF detected. Exiting..." << reset << std::endl;
+						break;
+					}
+				}
+				if (!contact[0].empty())
+					break;;
+				
+			}
+			while(true)
+			{
+				std::cout << green << "Last Name: " << reset;
+				if (!std::getline(std::cin, contact[1]))
+				{
+					if (std::cin.eof())
+					{
+						std::cout << std::endl
+								  << red << "EOF detected. Exiting..." << reset << std::endl;
+						break;
+					}
+				}
+				if (!contact[1].empty())
+					break;;
+			}
+			while(true)
+			{
+				std::cout << green << "Nick Name: " << reset;
+				if (!std::getline(std::cin, contact[2]))
+				{
+					if (std::cin.eof())
+					{
+						std::cout << std::endl
+								  << red << "EOF detected. Exiting..." << reset << std::endl;
+						break;
+					}
+				}
+				if (!contact[2].empty())
+					break;;
+			}
+			while(true)
+			{
+				std::cout << green << "Phone Number: " << reset;
+				if (!std::getline(std::cin, contact[3]))
+				{
+					if (std::cin.eof())
+					{
+						std::cout << std::endl
+								  << red << "EOF detected. Exiting..." << reset << std::endl;
+						break;
+					}
+				}
+				if (!contact[3].empty())
+					break;;
+			}
+			while(true)
+			{
+				std::cout << green << "Darkest Secret: " << reset;
+				if (!std::getline(std::cin, contact[4]))
+				{
+					if (std::cin.eof())
+					{
+						std::cout << std::endl
+								  << red << "EOF detected. Exiting..." << reset << std::endl;
+						break;
+					}
+				}
+				if (!contact[4].empty())
+					break;;				
+			}
+}
 int main()
 {
 	phonebook phone;
@@ -55,91 +132,7 @@ int main()
 
 		if (input == "ADD")
 		{
-			std::cout << green << "First Name: " << reset;
-			if (!std::getline(std::cin, contact[0]))
-			{
-				if (std::cin.eof())
-				{
-					std::cout << std::endl
-							  << red << "EOF detected. Exiting..." << reset << std::endl;
-					break;
-				}
-			}
-			if (contact[0].empty())
-			{
-				std::cout << red << "First name cannot be empty. Please try again." << reset << std::endl;
-				continue;
-			}
-
-			std::cout << green << "Last Name: " << reset;
-			if (!std::getline(std::cin, contact[1]))
-			{
-				if (std::cin.eof())
-				{
-					std::cout << std::endl
-							  << red << "EOF detected. Exiting..." << reset << std::endl;
-					break;
-				}
-			}
-			if (contact[1].empty())
-			{
-				std::cout << red << "Last name cannot be empty. Please try again." << reset << std::endl;
-				continue;
-			}
-
-			std::cout << green << "Nick Name: " << reset;
-			if (!std::getline(std::cin, contact[2]))
-			{
-				if (std::cin.eof())
-				{
-					std::cout << std::endl
-							  << red << "EOF detected. Exiting..." << reset << std::endl;
-					break;
-				}
-			}
-			if (contact[2].empty())
-			{
-				std::cout << red << "Nick name cannot be empty. Please try again." << reset << std::endl;
-				continue;
-			}
-
-			std::cout << green << "Phone Number: " << reset;
-			if (!std::getline(std::cin, contact[3]))
-			{
-				if (std::cin.eof())
-				{
-					std::cout << std::endl
-							  << red << "EOF detected. Exiting..." << reset << std::endl;
-					break;
-				}
-			}
-			if (contact[3].empty())
-			{
-				std::cout << red << "Phone number cannot be empty. Please try again." << reset << std::endl;
-				continue;
-			}
-			else if (valid_phone(contact[3]))
-			{
-				std::cout << red << "Invalid phone number format. Please enter a valid phone number." << reset << std::endl;
-				continue;
-			}
-
-			std::cout << green << "Darkest Secret: " << reset;
-			if (!std::getline(std::cin, contact[4]))
-			{
-				if (std::cin.eof())
-				{
-					std::cout << std::endl
-							  << red << "EOF detected. Exiting..." << reset << std::endl;
-					break;
-				}
-			}
-			if (contact[4].empty())
-			{
-				std::cout << red << "Darkest Secret cannot be empty. Please try again." << reset << std::endl;
-				continue;
-			}
-
+			loop_contact(contact);
 			phone.add_contact(contact);
 			std::cout << green << "Contact added successfully!" << reset << std::endl;
 		}

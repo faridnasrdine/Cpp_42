@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 15:51:29 by nafarid           #+#    #+#             */
-/*   Updated: 2025/11/17 19:06:44 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/12/04 16:08:33 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ public:
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);
+std::ostream &operator<<(std::ostream &out, const Point &rSym);
 
 #endif

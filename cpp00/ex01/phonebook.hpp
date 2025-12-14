@@ -6,7 +6,7 @@
 /*   By: nafarid <nafarid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:17 by nafarid           #+#    #+#             */
-/*   Updated: 2025/10/17 18:33:13 by nafarid          ###   ########.fr       */
+/*   Updated: 2025/11/03 09:32:57 by nafarid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ private:
     int size;
 public:    
     ~phonebook();
-    phonebook() : index(0), size(0) {}
+    phonebook();
     void add_contact(std::string data[5]);
     
     void display_contacts(int i);

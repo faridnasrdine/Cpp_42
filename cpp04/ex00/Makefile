@@ -1,8 +1,9 @@
-SRC = main.cpp Fixed.cpp bsp.cpp Point.cpp
-NAME = point
+SRC =	main.cpp Cat.cpp Animal.cpp Dog.cpp WrongAnimal.cpp \
+		WrongCat.cpp
+NAME = Polymorphism
 OBJ = $(SRC:.cpp=.o)
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror 
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 

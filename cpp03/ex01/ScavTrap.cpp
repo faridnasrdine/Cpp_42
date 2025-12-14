@@ -4,6 +4,9 @@
 ScavTrap::ScavTrap()
  : ClapTrap("default_scav")
 {
+    hitpoints = 100;
+    energypoints = 50;
+    attackdamage = 20;
 }
 
 ScavTrap::ScavTrap(const std::string& name)

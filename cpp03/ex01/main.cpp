@@ -3,14 +3,19 @@
 int main()
 {
     ScavTrap b("Robot");
-    ClapTrap* w = new ScavTrap(b);
 
-    w->attack("bad robot");
+    // b.attack("Attack");
+    // b.guardGate();
 
-    b.guardGate();
+    // b.takeDamage(30);
+    // b.beRepaired(20);
 
-    b.takeDamage(30);
-    b.beRepaired(20);
-    delete w;
+    for (size_t i = 0; i < 50; i++)
+    {
+        std::cout << i << std::endl;
+        b.attack("Monster");
+        b.beRepaired(1);
+    }
+    
     return 0;
 }
