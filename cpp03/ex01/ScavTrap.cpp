@@ -1,6 +1,5 @@
 #include "ScavTrap.hpp"
 
-
 ScavTrap::ScavTrap()
  : ClapTrap("default_scav")
 {
@@ -10,7 +9,7 @@ ScavTrap::ScavTrap()
 }
 
 ScavTrap::ScavTrap(const std::string& name)
-    : ClapTrap(name)
+ : ClapTrap(name)
 {
     hitpoints = 100;
     energypoints = 50;
