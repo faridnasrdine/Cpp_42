@@ -1,0 +1,66 @@
+#include "Form.hpp"
+#include "Bureaucrat.hpp"
+
+Form::Form()
+    : name("default"), isSigned(false), gradeToSign(150), gradeToExecute(150)
+{}
+
+
+Form::Form(const std::string& n, int gS, int gE) : name(n), isSigned(false), gradeToSign(gS), gradeToExecute(gE) 
+{
+    if(gS < 1 || gE < 1)
+        throw GradeTooHighException();
+    if(gS > 150 || gE > 150)
+        throw GradeTooLowException();
+}
+
+Form::Form(const Form& other)
+    : name(other.name),
+      isSigned(other.isSigned),
+      gradeToSign(other.gradeToSign),
+      gradeToExecute(other.gradeToExecute)
+{}
+
+Form& Form::operator=(const Form& other)
+{
+    if(this != &other)
+        isSigned = other.isSigned;
+    return *this;
+}
+
+Form::~Form(){
+
+}
+
+std::string Form::getName() const{
+    return name;
+}
+
+bool Form::getIsSigned() const{
+    return isSigned;
+}
+
+int Form::getGradeToSign() const{
+    return gradeToSign;
+}
+
+int Form::getGradeToExecute() const{
+    return gradeToExecute;
+}
+
+
+void Form::beSigned(const Bureaucrat& b)
+{
+    if(b.getGrade() > gradeToSign)
+        throw GradeTooLowException();
+    isSigned = true;
+}
+
+std::ostream& operator<<(std::ostream& out, const Form& f)
+{
+    out << "Form " << f.getName()
+        << ", signed: " << f.getIsSigned()
+        << ", grade to sign: " << f.getGradeToSign()
+        << ", grade to execute: " << f.getGradeToExecute();
+    return out;
+}
