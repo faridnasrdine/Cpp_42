@@ -12,5 +12,5 @@ int main(int ac, char **av)
 
     btc.LoadDatabase("data.csv");
     btc.ProcessInput(av[1]);
-
+    return 0;
 }

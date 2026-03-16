@@ -4,6 +4,8 @@
 #include <iostream>
 #include <map>
 #include <fstream>
+#include <sstream>
+#include <cstdlib>
 
 class BitcoinExchange
 {
@@ -11,7 +13,7 @@ class BitcoinExchange
         std::map<std::string, double> _database;
         bool IsValidDate(const std::string& date);
         bool IsValidValue(const std::string& value, double& outValue);
-        void LoadDatabaseFromFile(const std::string& filename);
+        double getExchangeRate(const std::string& date);
         
     public:
         BitcoinExchange();

@@ -62,26 +62,85 @@ bool BitcoinExchange::IsValidValue(const std::string& value, double& outValue)
 
 
 
-void BitcoinExchange::LoadDatabaseFromFile(const std::string& filename)
+double BitcoinExchange::getExchangeRate(const std::string& date)
 {
+    std::map<std::string, double>::iterator it = _database.lower_bound(date);
 
+    if(it != _database.end() && it->first == date)
+        return it->second;
+
+     if (it == _database.begin())
+        throw std::runtime_error("Error: no earlier date available.");
+    --it;
+    return it->second;
 }
 
 void BitcoinExchange::LoadDatabase(const std::string& filename)
 {
-     std::ifstream file(filename.c_str());
-     if(!file)
-     {
-        std::cerr << "c" << std::endl;
+    std::ifstream file(filename.c_str());
+    if(!file)
+    {
+        std::cerr << "Error: could not open file." << std::endl;
         return ;
-     }
-     std::string str;
+    }
+    std::string line;
+    std::getline(file, line);
+
+    while(std::getline(file, line))
+    {
+        std::stringstream s(line);
+        std::string date, str;
+        if(std::getline(s, date, ',') && std::getline(s, str))
+        {
+            double value = std::atof(str.c_str());
+            _database[date] = value;
+        }
+    }
 
 }
 
 void BitcoinExchange::ProcessInput(const std::string& filename)
 {
+    std::ifstream file(filename.c_str());
+    if(!file)
+    {
+        std::cerr << "Error: could not open file." << std::endl;
+        return ;
+    }
+    std::string line;
+    std::getline(file, line);
+    while(std::getline(file, line))
+    {
+        std::string::size_type pipe = line.find('|');
+        if(pipe == std::string::npos)
+        {
+            std::cerr << "Error: bad input => " << line << std::endl; 
+            continue;
+        }
+        std::string date = line.substr(0, pipe - 1);
+        std::string str = line.substr(pipe + 2);
 
+        if(!IsValidDate(date))
+        {
+            std::cerr << "Error: bad input => " << date << std::endl;
+            continue;
+        }
+
+        double value;
+        if(!IsValidValue(str, value))
+            continue;
+        try
+        {
+            double r = getExchangeRate(date);
+            std::cout << date << " => " << value 
+            << " = " << value * r << std::endl;
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << std::endl;
+        }
+        
+    }
 
 }
 
